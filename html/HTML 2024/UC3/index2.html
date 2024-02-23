@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="nome" name="nome">
+    <button id="botao-ins">Inserir</button>
+    <button id="botao-ex">Excluir</button>
+ 
+    <h4>Boletim</h4>
+    <ol id="boletim"></ol>
+ 
+    <label for="bim1">Bimestre 1:</label>
+    <input type="text" name="bim1" id="bim1">
+
+    <label for="bim2">Bimestre 2:</label>
+    <input type="text" name="bim2" id="bim2">
+
+    <p id="bim1"></p>
+    <p id="bim2"></p>
+
+
+    <script>
+        var nomes = [];
+        var nome = document.getElementById("nome");
+        var botaoinserir = document.getElementById("botao-ins");
+        var botaoexcluir = document.getElementById("botao-ex");
+        var listaNomes = document.getElementById("boletim");
+        var bimestre1 = document.getElementById(bimestre1)
+        var bimestre2 = document.getElementById(bimestre2)
+        var media = document.getElementById("media")
+        botaoexcluir.addEventListener("click", function(){
+            nomes.pop();
+            mostrarLista() 
+        }); 
+
+        botaoinserir.addEventListener("click", function(){
+            nomes.push(nome.value);
+            nome.value = ""; //Limpar o input de nome            
+            mostrarLista();
+        });
+        function mostrarLista() {
+            //Bloco de ações que serão executadas
+            var aux = "";
+            //console.log(nomes);
+            nomes.forEach(item => {
+                aux += `<li>${item}</li>`
+                //aux += "<li>" + item + </li>
+            });}
+ 
+            listaNomes.innerHTML = aux;
+
+            calcular.addEventListener ("click", function(){
+    media.value = (parseInt(bim1.value) +
+                    parseInt(bim2.value) )/2
+
+                    document.getElementById("mostrar-bim1").innerText = "B1: " + bim1.value
+                    document.getElementById("mostrar-bim2").innerText = "B2: " + bim2.value
+                    document.getElementById("mostrar-media").innerText = "Média: " + media.value
+
+        })
+    </script>
+</body>
+</html>
+

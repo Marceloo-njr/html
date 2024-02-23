@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 06</title>
+</head>
+<body>
+    <h4>Folha de Pagamento</h4>
+    <label for="">Nome Completo:</label>
+    <input type="text" name="nome" id="nome">
+
+    <label for="">Cargo:</label>
+    <input type="text" name="nome" id="nome">
+
+    <label for="">Salário Bruto:</label>
+    <input type="text" name="nome" id="nome">
+
+    <button id="btn-gerar-folha">Gera Folha de Pagamento</button>
+
+    <div id="relario"></div>
+    
+
+    <script>
+        var botaoGerar = document.getElementById("btn-gerar-folha")
+
+        botaoGerar.addEventListener("click", function(){
+            var nome = document.getElementById("nome");
+            var cargo = document.getElementById("cargo");
+            var salario = document.getElementById("salario");
+
+            var descVT = 0;
+            var descINSS = 0;
+            var descVR = 0;
+            var salarioLiquido = 0;
+
+            descVT = parseFloat(salario.value) * 0.06
+
+            if(parseFloat(salario.value) > 2500) {
+                descVR = 200;
+            } else{
+                descVR = 120;
+            }
+
+            if(parseFloat(salario.value) <= 1412) {
+                descINSS = 105.90
+            } else if(parseFloat(salario.value) > 1412 && parseFloat(salario.value) <= 2666.68) { descINSS = 105.90 + 112.92} else if (parseFloat(salario.value) > 2666.68 && parseFloat(salario.value) <= 4000.03) {
+                descINSS = 105.90 + 112.92 + 160 + 530.04
+            }
+
+            salarioLiquido = parseFloat(salario.value) - (descVT + descVR + descINSS)
+
+            relario.innerHTML = "<P> Nome Completo: " + nome.value + "</p>" 
+                                 + "<p> Cargo: " + cargo.value + "</p>"
+                                 + "<p> Salario Bruto: " + salario.value + "</p>"
+                                 + "<p> Salario Liquido: " + salario.value + "</p>"  
+        });
+
+    </script>
+</body>
+</html>
